@@ -2,13 +2,20 @@
 let prevThread;
 let isActive = localStorage.getItem('mns-active') === 'true'
 
+console.log("Hello");
+
 let observer = new MutationObserver( (records) => {
+  console.log("MutationObserver start");
   try {
     const thread = document.getElementsByClassName(CLASS_OBJ.thread)[0]
+    console.log(thread);
 
-    if ( prevThread != undefined && thread.isEqualNode(prevThread) ) return
-    if ( thread.getElementsByClassName('gYckH').length == 1 ) return
-    if ( !isActive ) return
+    if ( prevThread != undefined && thread.isEqualNode(prevThread) ) return;
+    console.log("1");
+    // if ( thread.getElementsByClassName(CLASS_OBJ.messages).length == 1 ) return;
+    // console.log("2");
+    // if ( !isActive ) return
+    // console.log("3");
 
     prevThread = thread.cloneNode(true)
     const messages = thread.getElementsByClassName(CLASS_OBJ.messages)
